@@ -1,0 +1,1 @@
+*Use an angular service for the targets resource

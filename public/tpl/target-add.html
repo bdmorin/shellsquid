@@ -1,0 +1,58 @@
+<div ng-controller="TargetAddCtrl" class="hide fade modal" id="target-modal-add">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click=resetForm() data-dismiss="modal" aria-hidden="true">X</button>
+        <h3>Add Target</h3>
+    </div>
+
+    <div class="modal-body">
+        <div ng-show="success">
+            Target created id: {{id}}
+        </div>
+        <div ng-show="error">
+            Error creating target!
+        </div>
+        <form  ng-submit="createTarget()" class="form-horizontal well">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label" for="inputName">Name</label>
+                    <div class="controls">
+                        <input type="text" id="inputName" ng-model="target.name" placeholder="Name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputOwner">Owner</label>
+                    <div class="controls">
+                        <input type="text" id="inputOwner" ng-model="target.owner" placeholder="Owner">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="localHost">Handler Host</label>
+                    <div class="controls">
+                        <input type="text" id="localHost" ng-model="target.local_host" placeholder="IP Address">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="localPort">Handler Port</label>
+                    <div class="controls">
+                        <input type="text" id="localPort" ng-model="target.local_port" placeholder="TCP Port">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="localDomain">Domain</label>
+                    <div class="controls">
+                        <input type="text" id="localDomain" ng-model="target.domain" placeholder="Optional Domain Name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="localShellcode">Alphanumeric Shellcode</label>
+                    <div class="controls">
+                        <textarea cols="20" rows="1" id="localShellcode" ng-model="target.shellcode" placeholder="Optional Shellcode"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <button type="submit" class="btn btn-success">Create Target</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

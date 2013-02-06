@@ -1,0 +1,20 @@
+<div class="hide fade modal" id="target-modal">
+    <!-- eventually this will be a form where you save the data -->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h3>{{single.name}}</h3>
+        <h5>{{single.owner}}</h5>
+    </div>
+    <div class="modal-body">
+    <ul class="unstyled">
+        <li><strong>Handler:</strong> {{single.local_host + ':' + single.local_port}}</li>
+        <li>Domain Name: {{single.domain_name || "Not Configured"}}</li>
+        <li>Requests for shellcode: {{single.requests || 0}}</li>
+        <li>Remote IPs:
+            <ul>
+                <li ng-repeat="ip in single.remote_ip">{{ip || "None"}}</li>
+            </ul>
+        <li>Shellcode: {{single.shellcode}}</li>
+    </ul>
+    </div>
+</div>

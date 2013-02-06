@@ -1,0 +1,20 @@
+<div ng-controller="TargetDeleteCtrl" class="hide fade modal" id="target-modal-del">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click=resetForm() data-dismiss="modal" aria-hidden="true">X</button>
+        <h3>Delete Target</h3>
+    </div>
+    <div class="modal-body">
+        <div ng-show="success">
+            Target deleted
+        </div>
+        <div ng-show="error">
+            Unable to delete target
+        </div>
+        <form ng-submit="deleteTarget()" class="form-inline well">
+            <fieldset>
+                <input type="text" id="inputId" ng-model="id" maxlength="24" size="24" placeholder="Target ID">
+                <button type="submit" class="btn btn-danger">Delete Target</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

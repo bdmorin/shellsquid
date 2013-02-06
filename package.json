@@ -1,0 +1,25 @@
+{
+    "name": "shellsquid",
+    "version": "0.0.1",
+    "author": "Tom Steele <tom@huptwo34.com>",
+    "scripts": {
+        "start": "node app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tomsteele/shellsquid.git"
+    },
+    "dependencies": {
+        "express": "3.1.0",
+        "mongoose": "3.5.5",
+        "socket.io": "0.9.13",
+        "http-proxy": "0.8.7",
+        "portscanner": "0.1.3",
+        "validator": "0.4.22",
+        "configure": "0.0.1"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.8"
+    }
+}

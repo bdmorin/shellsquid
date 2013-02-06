@@ -1,0 +1,22 @@
+{
+    "webapi": {
+        "ip": "127.0.0.1",
+        "port": 8443
+    },
+
+    "proxy": {
+        "ip": "127.0.0.1",
+        "port": 443
+    },
+   
+    "ssl": {
+        "key": "./cert/key.pem",
+        "cert": "./cert/cert.pem"
+    },
+
+    "default_handler": {
+        "ip": "127.0.0.1",
+        "port": 4444,
+        "shellcode": "xx"
+    }
+}

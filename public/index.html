@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+    <head>
+        <title>ShellSquid</title>
+        <link href="/css/lib/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/lib/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/css/lib/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+        <script src="/js/lib/angular.min.js"></script>
+        <script src="/js/lib/jquery.min.js"></script>
+        <script src="/js/lib/bootstrap.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/squid.js"></script>
+        <script src="/js/controllers.js"></script>
+    </head>
+
+    <body>
+        <div ng-include src="'tpl/header.html'"></div>
+
+        <!-- alert box for important things -->
+        <div id="message-box"></div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3">
+
+                    <!-- handler health messages -->
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <h3>Handlers</h3>
+                            <div ng-controller="HandlerCtrl" class="hero-unit">
+                                <ul id="handlers" class="unstyled">
+                                    <li ng-repeat="handler in handlers | orderBy: orderProp" class="{{handler.health}}">{{handler.ip + ':' + handler.port}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- list of all active sessions -->
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <h3>Sessions</h3>
+                            <div ng-controller="SessionCtrl" id="sessions" class="hero-unit">
+                                <ul class="unstyled">
+                                  <li ng-repeat="session in data">{{session.name}} {{session.ip}} Count: {{session.count}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="span9">
+
+                    <!-- log of requests through the proxy -->
+                    <div class="row fluid">
+                        <div class="span 12">
+                            <div id="log-header">
+                                <h3>Proxy Log</h3>&nbsp&nbsp
+                                <button type="button" onclick=toggleLogging() class="btn btn-danger btn-mini" data-toggle="button">Disable Logging</button>
+                            </div>
+                            <pre id="log">Requests</pre>
+                        </div>
+                    </div>
+
+
+                    <!-- table for targets -->
+                    <div class="row fluid">
+                        <div ng-controller="TargetListCtrl" class="span 12">
+                            <div id="target-table-header">
+                                <h3>Targets</h3>&nbsp&nbsp
+                                <a data-toggle="modal" href="#target-modal-add" title="add target"><i class="icon-plus-sign icon-2x"></i></a>
+                                <a data-toggle="modal" href="#target-modal-del" title="delete target"><i class="icon-minus-sign icon-2x"></i></a>
+                                <ng-include src="'tpl/target-add.html'"></ng-include>
+                                <ng-include src="'tpl/target-del.html'"></ng-include>
+                                <input ng-model="query" type="text" placeholder="Search">
+
+                            </div>
+                            <ng-include src="'tpl/target-modal.html'"></ng-include>
+                            <div class="hero-unit">
+                                <table id="target-table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Owner</th>
+                                            <th>Handler</th>
+                                            <th>Domain Name</th>
+                                            <th>ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="target in targets | filter:query | orderBy:orderProp">
+                                            <td><a ng-click=targetModal(target) data-toggle="modal" href='#target-modal'>{{target.name}}</a></td>
+                                            <td>{{target.owner}}</td>
+                                            <td>{{target.local_host + ':' + target.local_port}}</td>
+                                            <td>{{target.domain_name}}</td>
+                                            <td>{{target._id}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div ng-include src="'tpl/footer.html'"></div>
+    </body>
+</html>
