@@ -14,7 +14,6 @@ var sanitize = require('validator').sanitize;
 var initdb = require('./lib/initdb');
 var shellcode = require('./routes/api/shellcode');
 var targetApi = require('./routes/api/target');
-var routes = require('./routes');
 var proxy = require('./lib/proxy');
 var Target = require('./models/target');
 var mongoURL = process.env.MONGO_URL || 'mongodb://localhost/shellsquid';
