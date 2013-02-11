@@ -119,11 +119,6 @@ function emitHandlerHealth() {
   }
 }
 
-// using a global scope here really isn't the best thing to do
-// but there is an interesting level of complexity when trying to
-// track through the proxy. adding even more complexity
-// isn't a priority.
-
 // each time there is a request to the proxy emit that request
 function emitRequest(req) {
   var url = sanitize(req.headers.host + req.url).entityEncode();
