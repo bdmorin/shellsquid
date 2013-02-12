@@ -1,5 +1,4 @@
 function TargetListCtrl($scope, $http) {
-
   $scope.targetModal = function(target) {
     $scope.single = target;
   };
@@ -43,7 +42,6 @@ function TargetDeleteCtrl($scope, $http) {
 }
 
 function TargetAddCtrl($scope, $http) {
-
   $scope.resetForm = function() {
     $scope.id = '';
     $scope.success = false;
@@ -111,4 +109,5 @@ function findSessionIp(ip, targets) {
       return targets[i].name;
     }
   }
+  return 'Unknown';
 }

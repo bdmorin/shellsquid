@@ -11,6 +11,9 @@
   src: local('Lobster'), url(http://themes.googleusercontent.com/static/fonts/lobster/v5/NIaFDq6p6eLpSvtV2DTNDQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
 }
 
+#target-modal {
+  word-wrap: break-word;
+}
 .icon-plus-sign {
   color:grey;
 }
